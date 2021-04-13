@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="refresh" content="30">
+        <title>송담서원 AI위험감지</title>
+    </head>
+    <body>
+        <h1>분석결과 웹사이트에 올리기</h1>
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        <p>{{resultlast.result_date|date:"Y-m-d H:i"}}</p>    
+        <p>{{resultlast.label}}</p> 
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+        {% for list in resultlist %}      
+            <p>{{list.result_date|date:"Y-m-d H:i"}}</p>    
+            <p>{{list.label}}</p> 
+        {% endfor %}       
+
+    </body>
+</html>
