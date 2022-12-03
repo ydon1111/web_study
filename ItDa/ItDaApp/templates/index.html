@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>HeartRate plot</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            div{
+                overflow:hidden;
+                height:auto;
+            }
+            #jb-container {
+              margin: 10px auto;
+              padding: 20px;
+              border: 1px solid #bcbcbc;
+            }
+            #jb-header {
+              padding: 20px;
+              margin-bottom: 20px;
+              border: 1px solid #bcbcbc;
+            }
+            #jb-content {
+              padding: 20px;
+              margin-bottom: 20px;
+              border: 1px solid #bcbcbc;
+            }
+            #jb-sidebar {
+              padding: 20px;
+              margin-bottom: 20px;
+              border: 1px solid #bcbcbc;
+            }
+            #jb-footer {
+              padding: 20px;
+              border: 1px solid #bcbcbc;
+            }
+            @media ( min-width: 481px ) {
+              #jb-container {
+                width: 940px;
+              }
+              #jb-content {
+                width: 580px;
+                float: left;
+             
+              }
+              #jb-sidebar {
+                width: 260px;
+                float: right;
+              }
+              #jb-footer {
+                clear: both;
+              }
+            }
+          </style>
+    </head>
+
+    <body>
+        <div id="jb-container">
+            <div id="jb-header">
+                <h1>ItDaResearch</h1>
+            </div>
+
+            <div id="jb-content">
+                <p>
+                    {% autoescape off %}
+                        {{ plot_div }}
+                    {% endautoescape %}
+                </p>
+            </div>
+
+            <div id="jb-sidebar">
+                <h2 style=color:red;>심박수 위험 경고</h2>
+                <ul>
+                {% autoescape off %}
+                    {{ danger }}
+                {% endautoescape %}
+                </ul>
+            </div> 
+
+     <div id="jb-footer">
+        <p>Copyright ItDaResearch</p>
+      </div>
+    </div>
+
+    </body>
+</html>
