@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import sys
+import json
+import os 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,6 +24,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+SECRETS_PATH = os.path.join(ROOT_DIR, 'secrets.json')
+
+# json 파일을 python 객체로 변환
+secrets = json.loads(open(SECRETS_PATH).read())
+
+
+for key, value in secrets.items():
+    setattr(sys.modules[__name__], key, value)
+
 SECRET_KEY = 'django-insecure-g#18k$$vvk5$c0^ee*q^o$a+7qydzu2hsyjtnj=yp9vsgi)$g3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
