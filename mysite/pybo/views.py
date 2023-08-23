@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Question
+
+from .models import Question, Answer
 
 # # Create your views here.
 
@@ -19,5 +20,8 @@ def detail(request,question_id):
 
 def answer_create(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    question.answer_set.create(content=request.POST.get('content'), create_data = timezone.now())
-    return redirect('pybo:detail', question_id = question.id)
+
+    answer = Answer(question=question, content=request.POST.get('content'), create_date=timezone.now())
+    answer.save()
+    
+    return redirect('pybo:detail', question_id=question.id)
