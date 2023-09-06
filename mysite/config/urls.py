@@ -20,7 +20,7 @@ from django.urls import path,include
 urlpatterns = [
     path("admin/", admin.site.urls),
     #project와 app의 url 분리 
-    path("pybo/",include('pybo.urls')),
+    path("",include('pybo.urls')),
  
 
 ]
